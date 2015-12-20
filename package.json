@@ -24,6 +24,12 @@
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-nodemon": "^2.0.4"
+    "gulp-jshint": "^2.0.0",
+    "gulp-nodemon": "^2.0.4",
+    "jshint": "^2.8.0",
+    "jshint-stylish": "^2.1.0",
+    "kerberos": "0.0.17",
+    "should": "^8.0.2",
+    "supertest": "^1.1.0"
   }
 }
