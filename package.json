@@ -19,11 +19,14 @@
     "express": "^4.13.3",
     "glob": "6.0.1",
     "lodash": "^3.10.1",
+    "mongoose": "^4.3.3",
     "morgan": "^1.6.1",
     "path": "^0.12.7"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-nodemon": "^2.0.4"
+    "gulp-nodemon": "^2.0.4",
+    "should": "^8.0.2",
+    "supertest": "^1.1.0"
   }
 }

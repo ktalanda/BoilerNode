@@ -1,9 +1,10 @@
 'use strict';
 
-var init = require('./config/init')();
-var config = require('./config/config');
-var chalk = require('chalk');
-var app = require('./config/express')();
+var init = require('./config/init')(),
+    config = require('./config/config'),
+    chalk = require('chalk'),
+    db = require('./config/db'),
+    app = require('./config/express')();
 
 app.listen(config.port);
 

@@ -13,6 +13,10 @@ var
 module.exports = function () {
     var app = express();
 
+    config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
+        require(path.resolve(modelPath));
+    });
+
     app.locals.title = config.app.title;
     app.locals.description = config.app.description;
     app.locals.keywords = config.app.keywords;
