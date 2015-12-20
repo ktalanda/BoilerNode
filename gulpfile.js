@@ -16,3 +16,17 @@ gulp.task('production', function () {
         env: {'NODE_ENV': 'production'}
     });
 });
+
+gulp.task('secure', function () {
+    nodemon({
+        script: 'server.js',
+        env: {'NODE_ENV': 'secure'}
+    });
+});
+
+gulp.task('test', function () {
+    nodemon({
+        script: 'server.js',
+        env: {'NODE_ENV': 'test'}
+    });
+});
