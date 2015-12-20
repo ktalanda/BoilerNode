@@ -1,0 +1,22 @@
+{
+  "name": "BoilerNode",
+  "description": "Boiler code for node.js server with express.",
+  "version": "0.1.0",
+  "author": "ktalanda",
+  "license": "MIT",
+  "repository": "https://github.com/ktalanda/BoilerNode.git",
+  "engines": {
+    "node": "5.3.0",
+    "npm": "3.3.12"
+  },
+  "scripts": {},
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "chalk": "1.1.1",
+    "express": "^4.13.3",
+    "glob": "6.0.1",
+    "lodash": "^3.10.1",
+    "morgan": "^1.6.1",
+    "path": "^0.12.7"
+  }
+}
