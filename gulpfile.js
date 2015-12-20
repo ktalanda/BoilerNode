@@ -1,10 +1,11 @@
 var gulp = require('gulp'),
     nodemon = require('gulp-nodemon'),
     jshint = require('gulp-jshint'),
-    stylish = require('jshint-stylish');
+    stylish = require('jshint-stylish'),
+    mocha = require('gulp-mocha');
 
-gulp.task('default', ['lint', 'development']);
-gulp.task('deploy', ['lint', 'production']);
+gulp.task('default', ['lint', 'mocha', 'development']);
+gulp.task('deploy', ['lint', 'mocha', 'production']);
 
 gulp.task('development', function () {
     nodemon({
@@ -27,15 +28,13 @@ gulp.task('secure', function () {
     });
 });
 
-gulp.task('test', function () {
-    nodemon({
-        script: 'server.js',
-        env: {'NODE_ENV': 'test'}
-    });
-});
-
 gulp.task('lint', function () {
     return gulp.src('app/**/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter(stylish));
+});
+
+gulp.task('mocha', function () {
+    return gulp.src('app/tests/**/*.js')
+        .pipe(mocha());
 });
