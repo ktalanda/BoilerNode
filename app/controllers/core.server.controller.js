@@ -1,18 +1,18 @@
 'use strict';
 
-exports.default = function (req, res) {
-    return res.send('WORKING (ping, mirror)');
-};
-
-exports.ping = function (req, res) {
-    return res.send('SUCCESS');
-};
-
-exports.mirror = function (req, res) {
-    var output = req.body.input || req.param;
+exports.get = function (req, res) {
     return res.send({
-        output: output
+        message: 'dasdasdadsd'
     });
+};
+
+exports.post = function (req, res) {
+    var input = req.body.input;
+    return res.send({message: input});
+};
+
+exports.getWithParam = function (req, res) {
+    return res.send({param: req.param});
 };
 
 exports.resolveParam = function (req, res, next, param) {
