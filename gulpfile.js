@@ -4,8 +4,8 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish'),
     mocha = require('gulp-mocha');
 
-gulp.task('default', ['lint', 'mocha', 'development']);
-gulp.task('deploy', ['lint', 'mocha', 'production']);
+gulp.task('default', ['lint', 'development']);
+gulp.task('deploy', ['lint', 'production']);
 
 gulp.task('development', function () {
     nodemon({
@@ -35,6 +35,12 @@ gulp.task('lint', function () {
 });
 
 gulp.task('mocha', function () {
+    process.env.NODE_ENV = 'test';
     return gulp.src('app/tests/**/*.js')
-        .pipe(mocha());
+        .pipe(mocha({
+            reporter: 'spec',
+            globals: [
+                require('./server.js')
+            ]
+        }));
 });
