@@ -31,6 +31,7 @@
     "jshint": "^2.8.0",
     "jshint-stylish": "^2.1.0",
     "kerberos": "0.0.17",
-    "should": "^8.0.2"
+    "should": "^8.0.2",
+    "supertest": "^1.1.0"
   }
 }

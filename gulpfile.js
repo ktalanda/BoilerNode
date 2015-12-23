@@ -42,5 +42,8 @@ gulp.task('mocha', function () {
             globals: [
                 require('./server.js')
             ]
-        }));
+        }))
+        .once('end', function() {
+            process.exit();
+        });
 });
