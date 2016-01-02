@@ -15,6 +15,7 @@ gulp.task('development', function () {
 });
 
 gulp.task('production', function () {
+    process.env.MONGOLAB_URI = 'mongodb://admin:admin@ds037185.mongolab.com:37185/boilernode';
     nodemon({
         script: 'server.js',
         env: {'NODE_ENV': 'production'}
