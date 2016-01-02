@@ -17,6 +17,10 @@ var ItemSchema = new Schema({
     modified: {
         type: Date,
         default: Date.now
+    },
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
     }
 });
 
