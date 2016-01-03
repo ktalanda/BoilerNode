@@ -2,7 +2,7 @@
 
 var should = require('should'),
     request = require('supertest'),
-    app = require('../../server'),
+    app = require('../../../server'),
     agent = request.agent(app),
     mongoose = require('mongoose');
 

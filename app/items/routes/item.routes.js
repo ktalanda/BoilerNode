@@ -2,8 +2,8 @@
 
 module.exports = function (app) {
 
-    var users = require('../../app/controllers/users.server.controller'),
-        itemController = require('../../app/controllers/item.server.controller');
+    var users = require('../../users/controllers/users.server.controller'),
+        itemController = require('../controllers/item.server.controller');
 
     app.route('/item')
         .get(users.requiresLogin, itemController.list)

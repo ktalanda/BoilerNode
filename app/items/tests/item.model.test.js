@@ -1,6 +1,7 @@
 'use strict';
 
-var baseModelTest = require('./base.model.test'),
+var
+    baseModelTest = require('../../base/tests/base.model.test'),
     mongoose = require('mongoose'),
     Item = mongoose.model('Item');
 

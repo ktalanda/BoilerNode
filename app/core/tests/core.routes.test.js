@@ -2,7 +2,7 @@
 
 var should = require('should'),
     request = require('supertest'),
-    app = require('../../server.js'),
+    app = require('../../../server.js'),
     agent = request.agent(app);
 
 process.env.NODE_ENV = 'test';

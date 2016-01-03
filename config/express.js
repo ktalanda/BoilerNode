@@ -20,7 +20,7 @@ var
 module.exports = function (db) {
     var app = express();
 
-    config.getGlobbedFiles('./app/models/**/*.js').forEach(function (modelPath) {
+    config.getGlobbedFiles('./app/**/models/**/*.js').forEach(function (modelPath) {
         require(path.resolve(modelPath));
     });
 
@@ -71,7 +71,7 @@ module.exports = function (db) {
         }
     );
 
-    config.getGlobbedFiles('./app/routes/**/*.js').forEach(function (routePath) {
+    config.getGlobbedFiles('./app/**/routes/**/*.js').forEach(function (routePath) {
         require(path.resolve(routePath))(app);
     });
 

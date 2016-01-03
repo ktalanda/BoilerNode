@@ -3,7 +3,7 @@
 var passport = require('passport');
 
 module.exports = function (app) {
-    var users = require('../../app/controllers/users.server.controller');
+    var users = require('../controllers/users.server.controller');
 
     // Setting up the users authentication api
     app.route('/auth/signup').post(users.signup);

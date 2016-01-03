@@ -36,7 +36,7 @@ gulp.task('lint', function () {
 
 gulp.task('mocha', function () {
     process.env.NODE_ENV = 'test';
-    return gulp.src('app/tests/**/*.js')
+    return gulp.src('app/**/tests/**/*.js')
         .pipe(mocha({
             reporter: 'spec',
             globals: [

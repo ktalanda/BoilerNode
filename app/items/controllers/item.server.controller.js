@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-    errorHandler = require('./errors.server.controller'),
+    errorHandler = require('../../base/controllers/errors.server.controller'),
     crypto = require('crypto'),
     Item = mongoose.model('Item'),
     _ = require('lodash');
