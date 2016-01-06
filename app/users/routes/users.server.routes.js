@@ -10,18 +10,21 @@ module.exports = function (app) {
     app.route('/auth/signin').post(users.signin);
     app.route('/auth/signout').get(users.signout);
 
-    app.route('/users').get(users.hasAuthorization(['admin']), users.list)
+    // Setting up the users profile api
+    app.route('/users/me')
+        .get(users.me);
+
+    app.route('/users')
+        .get(users.hasAuthorization(['admin']), users.list)
         .post(users.hasAuthorization(['admin']), users.create)
-        .put(users.hasAuthorization(['admin']), users.update);
+        .put(users.requiresLogin, users.update);
 
     app.route('/users/:userId')
-        .delete(users.requiresLogin, users.hasAuthorization(['admin']), users.delete);
+        .delete(users.requiresLogin, users.hasAuthorization(['admin']), users.delete)
+        .put(users.hasAuthorization(['admin']), users.update);
 
     app.route('/users/salt/:userName')
         .get(users.getSalt);
-
-    // Setting up the users profile api
-    app.route('/users/me').get(users.me);
 
     // Finish by binding the user middleware
     app.param('userId', users.userByID);

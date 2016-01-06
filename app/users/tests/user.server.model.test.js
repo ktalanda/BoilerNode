@@ -16,7 +16,7 @@ var user, user2;
  * Unit tests
  */
 describe('User Model Unit Tests:', function() {
-	before(function(done) {
+	beforeEach(function(done) {
 		user = new User({
 			firstName: 'Full',
 			lastName: 'Name',
@@ -40,12 +40,12 @@ describe('User Model Unit Tests:', function() {
 	});
 
 	describe('Method Save', function() {
-		//it('should begin with no users', function(done) {
-		//	User.find({}, function(err, users) {
-		//		users.should.have.length(0);
-		//		done();
-		//	});
-		//});
+		it('should begin with no users', function(done) {
+			User.find({}, function(err, users) {
+				users.should.have.length(0);
+				done();
+			});
+		});
 
 		it('should be able to save without problems', function(done) {
 			user.save(done);
@@ -66,9 +66,25 @@ describe('User Model Unit Tests:', function() {
 				done();
 			});
 		});
+
+        it('should be able to show an error when try to save with short password', function(done) {
+            user.password = 'p';
+            return user.save(function(err) {
+                should.exist(err);
+                done();
+            });
+        });
+
+        it('should be able to show an error when try to save with invalid email', function(done) {
+            user.email = 'e';
+            return user.save(function(err) {
+                should.exist(err);
+                done();
+            });
+        });
 	});
 
-	after(function(done) {
+	afterEach(function(done) {
 		User.remove().exec();
 		done();
 	});

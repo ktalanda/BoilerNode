@@ -22,7 +22,7 @@ exports.create = function (req, res) {
 };
 
 exports.update = function (req, res) {
-    var user = req.user;
+    var user = req.profile || req.user;
     user = _.extend(user, req.body);
     user.save(function (err) {
         if (err) {

@@ -10,9 +10,9 @@ module.exports = function (app) {
         .post(users.requiresLogin, itemController.create);
 
     app.route('/item/:itemId')
-        .get(itemController.read)
-        .put(itemController.update)
-        .delete(itemController.delete);
+        .get(users.requiresLogin, itemController.read)
+        .put(users.requiresLogin, itemController.update)
+        .delete(users.requiresLogin, itemController.delete);
 
     app.param('itemId', itemController.byID);
 };

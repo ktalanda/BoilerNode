@@ -16,7 +16,6 @@ exports.signup = function(req, res) {
 	// Init Variables
 	var user = new User(req.body);
 
-    console.log(user);
 	// Add missing user fields
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;

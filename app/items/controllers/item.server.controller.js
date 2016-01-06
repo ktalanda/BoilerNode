@@ -14,6 +14,7 @@ exports.read = function (req, res) {
 };
 
 exports.list = function (req, res) {
+    req.query.user = req.user;
     Item.find(req.query).sort('-created').exec(function (err, items) {
         if (err) {
             return res.status(400).send({
@@ -27,7 +28,9 @@ exports.list = function (req, res) {
 
 
 exports.create = function (req, res) {
+    req.body.user = req.user;
     var item = new Item(req.body);
+    item.user = req.user;
     item.save(function (err) {
         if (err) {
             return res.status(400).send({
@@ -41,37 +44,49 @@ exports.create = function (req, res) {
 
 exports.update = function (req, res) {
     var item = req.item;
-    item = _.extend(item, req.body);
-    item.modified = new Date().getTime();
-
-    item.save(function (err) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.jsonp(item);
-        }
-    });
+    if (item) {
+        item = _.extend(item, req.body);
+        item.modified = new Date().getTime();
+        item.save(function (err) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.jsonp(item);
+            }
+        });
+    } else {
+        res.status(400)
+            .send('Bad request');
+    }
 };
 
 exports.delete = function (req, res) {
     var item = req.item;
-    item.remove(function (err) {
-        if (err) {
-            return res.status(400).send({
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.jsonp(item);
-        }
-    });
+    if (item) {
+        item.remove(function (err) {
+            if (err) {
+                return res.status(400).send({
+                    message: errorHandler.getErrorMessage(err)
+                });
+            } else {
+                res.jsonp(item);
+            }
+        });
+    } else {
+        res.status(400)
+            .send('Bad request');
+    }
 };
 
 exports.byID = function (req, res, next, id) {
-    Item.findById(id).exec(function (err, item) {
+    var query = {
+        _id: id,
+        user: req.user
+    };
+    Item.where(query).findOne(function (err, item) {
         if (err) return next(err);
-        if (!item) return next(new Error('Failed to load Category ' + id));
         req.item = item;
         next();
     });

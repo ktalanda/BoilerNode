@@ -46,7 +46,7 @@ module.exports = function (db) {
     app.use(session({
         saveUninitialized: true,
         resave: true,
-        secret: config.sessionSecret,
+        secret: config.sessionSecret
     }));
 
     app.use(passport.initialize());

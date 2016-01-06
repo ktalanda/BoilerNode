@@ -5,7 +5,7 @@ var
     mongoose = require('mongoose'),
     Item = mongoose.model('Item');
 
-//describe('Item CRUD tests:', function () {
-//    this.timeout(15000);
-//    baseCrudTest.perform('/item', 'Please fill Item name', Item, 'name');
-//});
+describe('Item CRUD tests:', function () {
+    this.timeout(15000);
+    baseCrudTest.perform('/item', 'Please fill Item name', Item, 'name');
+});
