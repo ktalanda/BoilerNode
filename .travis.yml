@@ -3,6 +3,6 @@ node_js:
   - "5.3"
 before_script:
     - npm install -g gulp
-script: gulp lint
+script: gulp test
 services:
   - mongodb

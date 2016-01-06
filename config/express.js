@@ -17,7 +17,7 @@ var
     methodOverride = require('method-override'),
     session = require('express-session');
 
-module.exports = function (db) {
+module.exports = function () {
     var app = express();
 
     config.getGlobbedFiles('./app/**/models/**/*.js').forEach(function (modelPath) {

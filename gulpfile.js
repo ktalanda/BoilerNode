@@ -6,6 +6,7 @@ var gulp = require('gulp'),
 
 gulp.task('default', ['lint', 'development']);
 gulp.task('deploy', ['lint', 'production']);
+gulp.task('test', ['lint', 'mocha']);
 
 gulp.task('development', function () {
     nodemon({
